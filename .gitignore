@@ -13,3 +13,5 @@
 .parcel*
 
 node_modules
+
+dist

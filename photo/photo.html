@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        background-image: url("https://i.imgur.com/FwbZARV.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        font-family: "Lato", sans-serif;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Lora", serif;
+      }
+
+			p {
+				color: #ffacfb;
+			}
+
+      .container {
+        width: 80%;
+        margin: auto;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+      }
+
+      #image {
+        width: 100%;
+        max-width: 700px;
+        margin-bottom: 0.7rem;
+      }
+
+      input {
+        display: block;
+        padding: 0.625rem;
+        border-radius: 0.5rem;
+        border-width: 1px;
+        border-color: #d1d5db;
+        width: 40%;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        color: #111827;
+        background-color: #f9fafb;
+        transition-duration: 250ms;
+				font-family: "Lato", sans-serif;
+      }
+
+      input:focus {
+        border-color: #3b82f6;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+      }
+
+      button {
+        margin-top: 0.7rem;
+        position: relative;
+        overflow: hidden;
+        transition: background 400ms;
+        color: #fff;
+        background-color: #9800ca;
+        padding: 1rem;
+        font-family: "Lato", sans-serif;
+        outline: 0;
+        border: 0;
+        border-radius: 0.25rem;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3); /* black with 30% opacity */
+        cursor: pointer;
+      }
+
+      span.ripple {
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 1000ms linear;
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    </style>
+    <script>
+      function createRipple(event) {
+        const button = event.currentTarget;
+
+        const circle = document.createElement("span");
+        const diameter = Math.max(button.clientWidth, button.clientHeight);
+        const radius = diameter / 2;
+
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+        circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+        circle.classList.add("ripple");
+
+        const ripple = button.getElementsByClassName("ripple")[0];
+
+        if (ripple) {
+          ripple.remove();
+        }
+
+        button.appendChild(circle);
+      }
+
+      window.addEventListener("load", () => {
+        const buttons = document.getElementsByTagName("button");
+        for (const button of buttons) {
+          button.addEventListener("click", createRipple);
+        }
+
+				const image = document.getElementById("image");
+				const url = document.getElementById("url");
+				const add = document.getElementById("add");
+
+				add.addEventListener("click", () => {
+					image.src = url.value;
+				});
+
+				url.addEventListener("keyup", (event) => {
+					if (event.key === "Enter") {
+						image.src = url.value;
+					}
+				});
+      });
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>JavaScript Assignment 1</h1>
+      <img src="https://i.imgur.com/nu79mBP.png" alt="photo" id="image" />
+      <p>Enter the URL of an image below:</p>
+      <input type="text" id="url" placeholder="Enter image url" />
+      <button id="add">Get Photo</button>
+    </div>
+  </body>
+</html>
