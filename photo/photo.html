@@ -43,9 +43,20 @@
         height: 100%;
       }
 
+			footer {
+				padding-bottom: 1rem;
+				padding-top: 1rem;
+				margin-top: 1rem;
+				width: 100%;
+				font-size: small;
+				text-align: center;
+				color: #ffacfb;
+			}
+
       #image {
-        width: 100%;
-        max-width: 700px;
+        width: 700px;
+				aspect-ratio: 16/9;
+				object-fit: cover;
         margin-bottom: 0.7rem;
       }
 
@@ -150,8 +161,11 @@
       <h1>JavaScript Assignment 1</h1>
       <img src="https://i.imgur.com/nu79mBP.png" alt="photo" id="image" />
       <p>Enter the URL of an image below:</p>
-      <input type="text" id="url" placeholder="Enter image url" />
+      <input type="text" value="https://i.imgur.com/nu79mBP.png" id="url" placeholder="Enter image url" />
       <button id="add">Get Photo</button>
     </div>
+		<footer>
+			<p>Done by Du Yuancheng &copy; 2023</p>
+		</footer>
   </body>
 </html>
