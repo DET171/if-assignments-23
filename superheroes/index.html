@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Superheroes</title>
+	<style>
+		/* top bar stickied at the top of the page with a red background */
+		.topbar {
+			text-align: center;
+			color: white;
+			background-color: red;
+			padding: 10px;
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			margin-top: 130px;
+			padding-left: 130px;
+			padding-right: 130px;
+		}
+
+		img {
+			width: 330px;
+			height: 330px;
+			object-fit: cover;
+			border-radius: 20px;
+			border: red;
+			border-style: double;
+			border-width: 8px;
+		}
+
+		.footer {
+			text-align: center;
+			font-style: italic;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class='topbar'>
+		<h1>Superheroes</h1>
+	</div>
+	<div class='container'>
+		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5u4i7ApYc5JqguDWG9uAelpC5ULpVdwN5w&usqp=CAU' alt='superman'>
+		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJWiVCUJHPu2BV1rywRirKis9fDGYCGx1nEg&usqp=CAU' alt='batman'>
+		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKiJS_KroWbCTxTS9FApBi7mEtjBQOV_CyKQ&usqp=CAU' alt='wonderwoman'>
+	</div>
+	<div class='footer'>
+		<p>done by Du Yuancheng</p>
+	</div>
+</body>
+</html>

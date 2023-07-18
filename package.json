@@ -1,0 +1,10 @@
+{
+  "name": "if-assignments",
+  "packageManager": "yarn@3.5.1",
+  "dependencies": {
+    "parcel": "^2.9.3"
+  },
+  "scripts": {
+    "serve": "parcel"
+  }
+}
