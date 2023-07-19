@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Dynamic Image</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -120,10 +120,10 @@
         const diameter = Math.max(button.clientWidth, button.clientHeight);
         const radius = diameter / 2;
 
-        circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-        circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-        circle.classList.add("ripple");
+				circle.style.width = circle.style.height = `${diameter}px`;
+				circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
+				circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;
+				circle.classList.add("ripple");
 
         const ripple = button.getElementsByClassName("ripple")[0];
 
