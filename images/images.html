@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>Image array</title>
+    <style>
+			html {
+				background-image: url('https://wallpaperaccess.com/full/2193079.jpg');
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-size: cover;
+				min-height: 100vh;
+			}
+
+      body {
+        text-align: center;
+				font-family: 'Lato', sans-serif;
+      }
+
+			h1 {
+				font-family: 'Lora', serif;
+				color: rgb(255, 245, 232);
+			}
+
+      img {
+        display: block;
+        margin-inline: auto;
+        width: 600px;
+        aspect-ratio: 16 / 9;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      button {
+        background-color: #950095;
+				color: white;
+				padding: 15px 20px;
+				border: none;
+				margin-top: 20px;
+				font-size: 15px;
+				cursor: pointer;
+				background-position: center;
+				transition: background 0.8s;
+				outline: none;
+			}
+
+			button:hover {
+				background: #7f017f radial-gradient(circle, transparent 1%, #7f017f 1%) center/15000%;
+			}
+
+			button:active {
+				background-color: #720072;
+				background-size: 100%;
+				transition: background 0s;
+			}
+
+			.btn-group {
+				display: flex;
+				flex-direction: row;
+			}
+
+			.btn-group button:first-child {
+				border-radius: 10px 0 0 10px;
+			}
+
+			.btn-group button:last-child {
+				border-radius: 0 10px 10px 0;
+			}
+
+      footer {
+        background-color: transparent;
+        padding: 10px;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+				color: rgb(255, 233, 249);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Image List</h1>
+    <div class="container">
+      <img />
+      <div class="btn-group">
+				<button>Previous</button>
+				<button>Next</button>
+			</div>
+    </div>
+    <footer>Done by Du Yuancheng</footer>
+    <script>
+      let current = 0;
+      const myImages = [
+        "https://i.imgur.com/KSSwCyO.jpg",
+        "https://i.imgur.com/E3d0lwG.png",
+        "https://i.imgur.com/Rp3MnIX.png",
+        "https://i.imgur.com/3PgOEL1.png",
+        "https://i.imgur.com/GCxpI3g.png",
+        "https://i.imgur.com/nu79mBP.png",
+      ];
+
+			const img = document.querySelector("img");
+			const button = document.querySelectorAll("button");
+			img.src = myImages[Math.floor(Math.random() * myImages.length)];
+
+      button[1].addEventListener('click', function nextPic() {
+        //advance the value of current
+        //get the next image URL from myImages
+        //update the src of the <img>
+				current = (current + 1) % myImages.length;
+				img.src = myImages[current];
+      });
+
+			button[0].addEventListener('click', function prevPic() {
+				current = (current - 1 + myImages.length) % myImages.length;
+				img.src = myImages[current];
+			});
+    </script>
+  </body>
+</html>

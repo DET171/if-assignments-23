@@ -120,6 +120,7 @@
         const diameter = Math.max(button.clientWidth, button.clientHeight);
         const radius = diameter / 2;
 
+				// smol fix
 				circle.style.width = circle.style.height = `${diameter}px`;
 				circle.style.left = `${event.clientX - button.getBoundingClientRect().left - radius}px`;
 				circle.style.top = `${event.clientY - button.getBoundingClientRect().top - radius}px`;

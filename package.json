@@ -5,6 +5,6 @@
     "parcel": "^2.9.3"
   },
   "scripts": {
-    "serve": "parcel"
+    "serve": "parcel $DIR/$DIR.html"
   }
 }
