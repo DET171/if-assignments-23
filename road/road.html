@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bird n Car</title>
+    <style>
+      html {
+        padding: 0;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #30611a;
+        color: white;
+      }
+      h1 {
+        text-align: center;
+        background-color: #4992d3;
+        margin: 0;
+        padding: 40px;
+        text-transform: uppercase;
+      }
+      #road {
+        width: 100%;
+        height: 426px;
+        margin: 0 auto;
+        background-image: url(https://drive.google.com/file/d/1NZM1oi0AzJKtkVPIcMJVKdDqC5FZUM01/view?usp=drive_link);
+        background-size: 100% 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      #road img {
+        position: absolute;
+      }
+      #car {
+        width: 200px;
+        right: 0;
+        bottom: 100px;
+      }
+      #bird {
+        height: 60px;
+      }
+    </style>
+  </head>
+  <body onkeydown="move()">
+    <h1>Key Controls</h1>
+    <div id="road">
+      <img
+        src="https://drive.google.com/file/d/1Z8b2NPQazom5Mn5EahMXyGAv2Le88K5M/view?usp=sharing"
+        id="car"
+      />
+      <img
+        src="https://drive.google.com/file/d/1DnZgcv0GfLn53YCJGi_LA3BiYRDQj8Pm/view?usp=sharing"
+        id="bird"
+      />
+    </div>
+    <script>
+      /*
+		keyCode :
+			left = 37
+			up = 38
+			right = 39
+			down = 40
+			a = 65
+			d = 68
+		*/
+
+      car = document.querySelector("#car");
+      birdT = document.querySelector("#bird");
+      birdL = document.querySelector("#bird");
+      car.style.right = "0px";
+      bird.style.top = "0px";
+      bird.style.left = "200px";
+
+      (faceLeft = "scaleX(1)"), (faceRight = "scaleX(-1)");
+
+      function move() {
+        console.log(event.keyCode);
+
+        //find out the current style values of car and bird
+
+        //recalculate new carR right value
+        if (event.keyCode == 65) {
+          //reduce value of car
+        }
+        if (event.keyCode == 68) {
+          //increase value of carR
+        }
+        //update the "right" style property for the car
+
+        //recalculate new birdT & birdL values
+        if (event.keyCode == 38) {
+          //reduce value of birdT
+        }
+        if (event.keyCode == 40) {
+          //increase value of birdT
+        }
+        if (event.keyCode == 37) {
+          //reduce value of birdL
+        }
+        if (event.keyCode == 39) {
+          //increase value of birdL
+        }
+
+        //update the "left" style property for the bird
+      }
+    </script>
+  </body>
+</html>

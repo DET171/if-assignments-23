@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Mean Score Calculator</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans&display=swap" rel="stylesheet">
+		<style>
+			html {
+				background-image: url('https://i.imgur.com/Rp3MnIX.png');
+				background-size: cover;
+				background-repeat: no-repeat;
+				min-height: 100vh;
+			}
+			
+			body {
+				font-family: "Noto Sans", sans-serif;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+				font-size: 36px;
+				margin-top: 50px;
+			}
+			div.container {
+				background-color: #fff;
+				border-radius: 10px;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+				margin: 50px auto;
+				padding: 20px;
+				text-align: left;
+				width: 400px;
+			}
+			label {
+				color: #333;
+				display: block;
+				font-size: 18px;
+				margin-bottom: 10px;
+			}
+			input {
+				border: none;
+				border-radius: 5px;
+				box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+				font-size: 18px;
+				padding: 10px;
+				width: 100px;
+			}
+			button {
+				background-color: #333;
+				border: none;
+				border-radius: 5px;
+				color: #fff;
+				cursor: pointer;
+				font-family: "Lora", sans-serif;
+				font-size: 18px;
+				margin-left: 10px;
+				padding: 10px 20px;
+			}
+			button:hover {
+				background-color: #555;
+			}
+			p {
+				color: #333;
+				font-size: 18px;
+				margin-top: 20px;
+			}
+			span {
+				font-weight: bold;
+			}
+			footer {
+				color: #e8e8e8;
+				font-size: 14px;
+				margin-top: 50px;
+			}
+		</style>
+
+		<script type="module">
+			import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+
+			window.onload = () => {
+				const score = document.getElementById("score");
+				const add = document.getElementById("add");
+				const clear = document.getElementById("clear");
+				const numSubjs = document.getElementById("numSubjs");
+				const mean = document.getElementById("mean");
+				const msg = document.getElementById("msg");
+
+				let scores = [];
+
+				const grades = [
+					{ grade: "A1", min: 75, max: 100 },
+					{ grade: "A2", min: 70, max: 74 },
+					{ grade: "B3", min: 65, max: 69 },
+					{ grade: "B4", min: 60, max: 64 },
+					{ grade: "C5", min: 55, max: 59 },
+					{ grade: "C6", min: 50, max: 54 },
+					{ grade: "D7", min: 45, max: 49 },
+					{ grade: "E8", min: 40, max: 44 },
+					{ grade: "F9", min: 0, max: 39 },
+				];
+
+				add.onclick = () => {
+					confetti();
+					scores.push({
+						score: +score.value,
+						grade: grades.find(
+							(grade) =>
+								grade.min <= score.value && grade.max >= score.value
+						).grade,
+					});
+
+					numSubjs.innerHTML = scores.length;
+					mean.innerHTML = (scores.reduce((a, b) => a + b.score, 0) / scores.length).toFixed(2);
+					msg.innerHTML = (scores
+						.map((score) => +score.grade[1])
+						.reduce((a, b) => a + b, 0) / scores.length).toFixed(2);
+				};
+
+				clear.onclick = () => {
+					scores = [];
+					numSubjs.innerHTML = 0;
+					mean.innerHTML = 0;
+					msg.innerHTML = 0;
+				};
+			};
+		</script>
+	</head>
+
+	<body>
+		<h1>Mean Score Calculator</h1>
+
+		<div class="container">
+			<label for="score">Enter subject score:</label>
+			<input type="number" id="score" value="0" min="0" max="100" />
+			<button id="add">Add Score</button>
+			<button id="clear">Clear All</button>
+
+			<p>Number of subjects: <span id="numSubjs">0</span></p>
+			<p>Mean score: <span id="mean">0</span></p>
+			<p>MSG: <span id="msg">0</span></p>
+		</div>
+
+		<footer>
+			Copyright &copy; 2023 Du Yuancheng <br />
+			Distributed under GPL-3.0
+		</footer>
+	</body>
+</html>

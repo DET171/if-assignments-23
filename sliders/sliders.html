@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .row {
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
+      }
+      input {
+        margin: 0.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Changing CSS values with JavaScript</h1>
+    <div class="row">
+      <div class="controls">
+        <div>
+          <input type="range" min="1" max="5" value="1" oninput=" " />
+          <span>1</span>
+        </div>
+
+        <div>
+          <input
+            type="range"
+            min="20"
+            max="100"
+            value="90"
+            step="10"
+            oninput=" "
+          />
+          <span>90</span>
+        </div>
+      </div>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti omnis
+        ab consequuntur cupiditate explicabo nam culpa error dignissimos,
+        facilis deserunt asperiores nisi harum eveniet sint, ut quos vero
+        repellat quisquam.
+      </p>
+    </div>
+    <script>
+      inputElements = document.querySelectorAll("input");
+      spanElements = document.querySelectorAll("span");
+
+      function show(n) {}
+    </script>
+  </body>
+</html>
