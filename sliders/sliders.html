@@ -1,54 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      .row {
-        display: flex;
-        flex-direction: row;
-        gap: 2em;
-      }
-      input {
-        margin: 0.4rem;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Changing CSS values with JavaScript</h1>
-    <div class="row">
-      <div class="controls">
-        <div>
-          <input type="range" min="1" max="5" value="1" oninput=" " />
-          <span>1</span>
-        </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+		<title>Document</title>
+		<style>
+			html {
+				background-image: url('https://i.imgur.com/GCxpI3g.png');
+				background-repeat: no-repeat;
+				background-size: cover;
+				min-height: 100vh;
+			}
 
-        <div>
-          <input
-            type="range"
-            min="20"
-            max="100"
-            value="90"
-            step="10"
-            oninput=" "
-          />
-          <span>90</span>
-        </div>
-      </div>
+			body {
+				font-family: 'Lato', sans-serif;
+				margin: 0;
+				padding: 0;
+			}
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti omnis
-        ab consequuntur cupiditate explicabo nam culpa error dignissimos,
-        facilis deserunt asperiores nisi harum eveniet sint, ut quos vero
-        repellat quisquam.
-      </p>
-    </div>
-    <script>
-      inputElements = document.querySelectorAll("input");
-      spanElements = document.querySelectorAll("span");
+			h1 {
+				text-align: center;
+				font-family: 'Lora', serif;
+				margin-top: 2rem;
+			}
 
-      function show(n) {}
-    </script>
-  </body>
+			.row {
+				display: flex;
+				flex-direction: row;
+				gap: 2em;
+				margin: 2rem;
+				margin-left: auto;
+				width: 90%;
+				margin-right: auto;
+				padding: 2rem;
+				background-color: #fff;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+				border-radius: 10px;
+				background-color: rgb(90, 178, 207);
+			}
+
+			/* set row width */
+			@media screen and (min-width: 768px) {
+				.row {
+					width: 68%;
+				}
+			}
+			
+
+			.controls {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+
+			input[type="range"] {
+				width: 100%;
+				margin: 0.4rem 0;
+			}
+
+			span {
+				font-size: 1.2rem;
+				font-weight: bold;
+				margin-left: 0rem;
+			}
+
+			span#rotateDisplay {
+				font-style: italic;
+				font-weight: normal;
+				font-size: medium;
+				color: rgb(114, 0, 113);
+			}
+
+			p {
+				font-size: 1.0rem;
+				line-height: 1.5;
+				width: 40%;
+				margin: auto;
+				text-align: justify;
+			}
+
+
+			input[type="range"] {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 100%;
+				height: 10px;
+				border-radius: 5px;
+				background-color: #ddd;
+				outline: none;
+				opacity: 0.7;
+				-webkit-transition: .2s;
+				transition: opacity .2s;
+			}
+
+			input[type="range"]::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: #4caf50;
+				cursor: pointer;
+			}
+
+			input[type="range"]::-moz-range-thumb {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: #4caf50;
+				cursor: pointer;
+			}
+
+			.controls > div {
+				margin-bottom: 0.8rem;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Changing CSS values with JavaScript</h1>
+		<div class="row">
+			<div class="controls">
+				<div>
+					<label for="fontSize">transform: rotate( <span id="rotateDisplay">0</span> deg):</label>
+					<input type="range" min="0" max="360" value="0" id="rotate" />
+				</div>
+
+				<div>
+					<label for="opacity">Red:</label>
+					<input
+						type="range"
+						min="1"
+						max="256"
+						value="90"
+						step="1"
+						id="r"
+					/>
+					<span id="rval">90</span>
+				</div>
+				<div>
+					<label for="opacity">Green:</label>
+					<input
+						type="range"
+						min="1"
+						max="256"
+						value="178"
+						step="1"
+						id="g"
+					/>
+					<span id="gval">178</span>
+				</div>
+				<div>
+					<label for="opacity">Blue:</label>
+					<input
+						type="range"
+						min="1"
+						max="256"
+						value="207"
+						step="1"
+						id="b"
+					/>
+					<span id="bval">207</span>
+			</div>
+
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti omnis
+				ab consequuntur cupiditate explicabo nam culpa error dignissimos,
+				facilis deserunt asperiores nisi harum eveniet sint, ut quos vero
+				repellat quisquam.
+			</p>
+		</div>
+		<script>
+			const rgbInputs = [
+				document.getElementById('r'),
+				document.getElementById('g'),
+				document.getElementById('b'),
+			];
+			const container = document.getElementsByClassName('row')[0];
+			const rotateInput = document.getElementById('rotate');
+			const rotateDisplay = document.getElementById('rotateDisplay');
+			const para = document.querySelector('.row p');
+
+			rotateInput.addEventListener('input', (e) => {
+				const rotate = rotateInput.value;
+				rotateDisplay.textContent = rotate;
+				para.style.transform = `rotate(${rotate}deg)`;
+			});
+
+			console.log(rgbInputs);
+			rgbInputs.forEach((input) => {
+				input.addEventListener('input', (e) => {
+					const red = rgbInputs[0].value;
+					document.getElementById('rval').textContent = red;
+					const green = rgbInputs[1].value;
+					document.getElementById('gval').textContent = green;
+					const blue = rgbInputs[2].value;
+					document.getElementById('bval').textContent = blue;
+					container.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+				});
+			});
+
+		</script>
+	</body>
 </html>
