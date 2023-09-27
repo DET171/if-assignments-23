@@ -2,9 +2,19 @@
 <html lang="en">
   <head>
     <title>Bird n Car</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       html {
         padding: 0;
+        font-family: "Lato", sans-serif;
+        margin: 0;
+        background-color: #30611a;
+        color: white;
       }
       body {
         padding: 0;
@@ -23,7 +33,7 @@
         width: 100%;
         height: 426px;
         margin: 0 auto;
-        background-image: url(https://drive.google.com/file/d/1NZM1oi0AzJKtkVPIcMJVKdDqC5FZUM01/view?usp=drive_link);
+        background-image: url("http://www1.hci.edu.sg/yongjs/sec2/road.jpg");
         background-size: 100% 100%;
         position: relative;
         overflow: hidden;
@@ -44,64 +54,73 @@
   <body onkeydown="move()">
     <h1>Key Controls</h1>
     <div id="road">
-      <img
-        src="https://drive.google.com/file/d/1Z8b2NPQazom5Mn5EahMXyGAv2Le88K5M/view?usp=sharing"
-        id="car"
-      />
-      <img
-        src="https://drive.google.com/file/d/1DnZgcv0GfLn53YCJGi_LA3BiYRDQj8Pm/view?usp=sharing"
-        id="bird"
-      />
+      <img src="http://www1.hci.edu.sg/yongjs/sec2/car.png" id="car" />
+      <img src="http://www1.hci.edu.sg/yongjs/sec2/bird.png" id="bird" />
     </div>
     <script>
-      /*
-		keyCode :
-			left = 37
-			up = 38
-			right = 39
-			down = 40
-			a = 65
-			d = 68
-		*/
-
-      car = document.querySelector("#car");
-      birdT = document.querySelector("#bird");
-      birdL = document.querySelector("#bird");
+			/** @type {HTMLImageElement} */
+      const car = document.querySelector("#car");
+			/** @type {HTMLImageElement} */
+      const bird = document.querySelector("#bird");
+			/** @type {HTMLDivElement} */
+			const road = document.querySelector("#road");
       car.style.right = "0px";
       bird.style.top = "0px";
       bird.style.left = "200px";
 
-      (faceLeft = "scaleX(1)"), (faceRight = "scaleX(-1)");
+      const faceLeft = "scaleX(1)",
+        faceRight = "scaleX(-1)";
+
+      // a/d for car, up/down/left/right for bird
+      const functions = {
+        65: () => {
+          car.style.transform = faceLeft;
+          const newRight = parseInt(car.style.right) + 10;
+          if (newRight <= road.offsetWidth - car.offsetWidth) {
+            car.style.right = newRight + "px";
+          }
+        },
+        68: () => {
+          car.style.transform = faceRight;
+          const newRight = parseInt(car.style.right) - 10;
+          if (newRight >= -200) {
+            car.style.right = newRight + "px";
+          }
+        },
+        37: () => {
+          bird.style.transform = faceRight;
+          const newLeft = parseInt(bird.style.left) - 10;
+          if (newLeft >= 0) {
+            bird.style.left = newLeft + "px";
+          }
+        },
+        39: () => {
+          bird.style.transform = faceLeft;
+          const newLeft = parseInt(bird.style.left) + 10;
+          if (newLeft <= road.offsetWidth - bird.offsetWidth) {
+            bird.style.left = newLeft + "px";
+          }
+        },
+        38: () => {
+          const newTop = parseInt(bird.style.top) - 10;
+          if (newTop >= -60) {
+            bird.style.top = newTop + "px";
+          }
+        },
+        40: () => {
+          const newTop = parseInt(bird.style.top) + 10;
+          if (newTop <= road.offsetHeight - bird.offsetHeight) {
+            bird.style.top = newTop + "px";
+          }
+        },
+      };
 
       function move() {
-        console.log(event.keyCode);
-
-        //find out the current style values of car and bird
-
-        //recalculate new carR right value
-        if (event.keyCode == 65) {
-          //reduce value of car
+        const key = event.keyCode;
+        if (functions[key]) {
+          return functions[key]();
         }
-        if (event.keyCode == 68) {
-          //increase value of carR
-        }
-        //update the "right" style property for the car
-
-        //recalculate new birdT & birdL values
-        if (event.keyCode == 38) {
-          //reduce value of birdT
-        }
-        if (event.keyCode == 40) {
-          //increase value of birdT
-        }
-        if (event.keyCode == 37) {
-          //reduce value of birdL
-        }
-        if (event.keyCode == 39) {
-          //increase value of birdL
-        }
-
-        //update the "left" style property for the bird
+        return console.log("bollocks");
       }
     </script>
   </body>

@@ -114,6 +114,30 @@
 				cursor: pointer;
 			}
 
+			input[type="color"] {
+				-webkit-appearance: none;
+				appearance: none;
+				width: 20%;
+				height: 30px;
+				border-radius: 5px;
+				background-color: #ddd;
+				outline: none;
+				opacity: 0.7;
+				-webkit-transition: .2s;
+				transition: opacity .2s;
+			}
+
+			input[type="color"]::-webkit-color-swatch-wrapper {
+    		padding: 0;
+				border: none;
+			}
+
+			input[type="color"]::-webkit-color-swatch {
+				border: none;
+			}
+
+
+
 			.controls > div {
 				margin-bottom: 0.8rem;
 			}
@@ -165,6 +189,10 @@
 					<span id="bval">207</span>
 			</div>
 
+			<!-- input color -->
+			<label for="color">Color:</label>
+			<input type="color" id="color" value="#000000">
+
 			<p>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti omnis
 				ab consequuntur cupiditate explicabo nam culpa error dignissimos,
@@ -178,7 +206,8 @@
 				document.getElementById('g'),
 				document.getElementById('b'),
 			];
-			const container = document.getElementsByClassName('row')[0];
+			const container = document.querySelector('.row');
+			const colorInput = document.getElementById('color');
 			const rotateInput = document.getElementById('rotate');
 			const rotateDisplay = document.getElementById('rotateDisplay');
 			const para = document.querySelector('.row p');
@@ -187,6 +216,11 @@
 				const rotate = rotateInput.value;
 				rotateDisplay.textContent = rotate;
 				para.style.transform = `rotate(${rotate}deg)`;
+			});
+
+			colorInput.addEventListener('input', (e) => {
+				const color = colorInput.value;
+				para.style.color = color;
 			});
 
 			console.log(rgbInputs);
